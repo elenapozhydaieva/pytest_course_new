@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 @pytest.fixture()
@@ -19,3 +20,9 @@ def login(driver):
     password_field.send_keys("secret_sauce")
     login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
     login_button.click()
+
+@pytest.fixture
+def wait(driver):
+    wait = WebDriverWait(driver, timeout=10)
+    return wait
+
