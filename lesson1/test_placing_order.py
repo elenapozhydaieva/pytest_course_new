@@ -1,25 +1,8 @@
-import time
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-driver = webdriver.Chrome()
-
-
-@pytest.fixture()
-def login():
-    driver.get("https://www.saucedemo.com/")
-    username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
-    username_field.send_keys("standard_user")
-    password_field = driver.find_element(By.XPATH, '//input[@data-test="password"]')
-    password_field.send_keys("secret_sauce")
-    login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
-    login_button.click()
-
-
 # Placing an order using correct data
-def test_place_order_correct_data(login):
+def test_place_order_correct_data(driver, login):
     add_to_cart_button = driver.find_element(By.CSS_SELECTOR, "button[data-test='add-to-cart-sauce-labs-backpack']")
     add_to_cart_button.click()
     cart_button = driver.find_element(By.CSS_SELECTOR, '.shopping_cart_link')
