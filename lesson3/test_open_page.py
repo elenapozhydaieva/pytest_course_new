@@ -27,7 +27,7 @@ def test_title(driver):
 # Дождаться появления кнопки "Начать тестирование"
 def test_button_start_testing(driver, wait):
     driver.get(MAIN_PAGE_URL)
-    button_start_testing = wait.until(EC.element_to_be_clickable(START_TESTING_BUTTON))
+    button_start_testing = wait.until(EC.visibility_of_element_located(START_TESTING_BUTTON))
     assert button_start_testing.is_displayed()
 
 
